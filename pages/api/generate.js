@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-import {long} from "./prompts.json"
+import {question, cloze} from "./prompts.json"
 const debugging = false;
 
 const configuration = new Configuration({
@@ -54,6 +54,7 @@ export default async function (req, res) {
 }
 
 function generatePrompt(input, promptType) {
+<<<<<<< HEAD
   if(prompt === "Question") {
     console.log(prompt)
     return `${long.goal}
@@ -71,4 +72,20 @@ function generatePrompt(input, promptType) {
   } else if (prompt === "Cloze") {
   }
 
+=======
+    console.log(promptType)
+    const prompt = promptType === "Question" ? question : cloze;
+    return `${prompt.goal}
+      Text1: ${prompt.shots[0].text}
+      Question1: ${prompt.shots[0].question}
+      
+      Text2: ${prompt.shots[1].text}
+      Question2: ${prompt.shots[1].question}
+      
+      Text3: ${prompt.shots[2].text}
+      Question3: ${prompt.shots[2].question}
+      
+      Text: ${input}
+      ${prompt.ending}`;
+>>>>>>> 2fc877671ec84908228e26430a6de31949c5374b
 }
