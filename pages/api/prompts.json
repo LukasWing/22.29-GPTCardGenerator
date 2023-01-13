@@ -1,5 +1,5 @@
 {
-    "long": {
+    "question": {
         "goal": "Generate a short question based on text.",
         "shots":[
             {
@@ -14,5 +14,21 @@
             }
         ],
         "ending": "Question:"
+    },
+    "cloze": {
+        "goal": "Generate a cloze deletion where a key term is removed.",
+        "shots":[
+            {
+                "text": "The presentation layer is the user interface of a software application.",
+                "question": "The ____ is the user interface of a software application."
+            },{
+                "text": "The organization stated it would '____' with other institutions and researchers by making its patents and research open to the public.",
+                "question": "The organization stated it would 'freely collaborate' with other institutions and researchers by making its patents and research open to the public."
+            },{
+                "text": "Spaced repetition systems work only as well as the _____ you give them.",
+                "question": "Spaced repetition systems work only as well as the prompts you give them."
+            }
+        ],
+        "ending": "Cloze deletion:"
     }
 }
