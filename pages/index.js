@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 
 export default function Home() {
   const [textInput, setTextInput] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Question");
   const [result, setResult] = useState();
 
   const handleOptionChange = (changeEvent) => {
@@ -82,6 +82,7 @@ export default function Home() {
         <br />
       </form>
         {result && (
+          <div>
            <textarea
            resize="none"
            type="question"
@@ -90,7 +91,12 @@ export default function Home() {
            value={result}
            onChange={(e) => setResult(e.target.value)}
          />
+         <br/>
+         <button onClick={() => navigator.clipboard.writeText(result)}>Copy to Clipboard</button>
+         </div>
         )}
+
+    
       </main>
     </div>
   );
