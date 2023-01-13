@@ -1,10 +1,15 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
   const [textInput, setTextInput] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
   const [result, setResult] = useState();
+
+  const handleOptionChange = (changeEvent) => {
+    setSelectedOption(changeEvent.target.value);
+  }
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -15,7 +20,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: textInput }),
+        body: JSON.stringify({ text: textInput, prompt: selectedOption}),
       });
 
       const data = await response.json();
@@ -23,7 +28,7 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult("Question: " + data.result);
+      setResult(data.result);
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -54,6 +59,28 @@ export default function Home() {
           />
           <input type="submit" value="Generate Question" />
         </form>
+        <form>
+        <label>
+          <input
+            type="radio"
+            value="Question"
+            checked={selectedOption === 'Question'}
+            onChange={handleOptionChange}
+          />
+          Question
+        </label>
+        <br />
+        <label>
+          <input
+            type="radio"
+            value="Cloze"
+            checked={selectedOption === 'Cloze'}
+            onChange={handleOptionChange}
+          />
+          Cloze
+        </label>
+        <br />
+      </form>
         {result && (
            <textarea
            resize="none"
