@@ -8,6 +8,7 @@ export default function Home() {
 
   async function onSubmit(event) {
     event.preventDefault();
+    console.log("submitting", textInput);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -22,8 +23,7 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult(data.result);
-      setTextInput("");
+      setResult("Question: " + data.result);
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -43,15 +43,26 @@ export default function Home() {
         <h3>Flashcard Question Generator</h3>
         <form onSubmit={onSubmit}>
           <textarea
+            resize="none" 
             type="text"
             name="text"
+            maxLength={510}
             placeholder="Enter text"
             value={textInput}
             onChange={(e) => setTextInput(e.target.value)}
           />
           <input type="submit" value="Generate Question" />
         </form>
-        <div className={styles.result}>{result}</div>
+        {result && (
+           <textarea
+           resize="none"
+           type="question"
+           name="question"
+           maxLength={510}
+           value={result}
+           onChange={(e) => setResult(e.target.value)}
+         />
+        )}
       </main>
     </div>
   );
