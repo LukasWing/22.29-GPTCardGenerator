@@ -17,7 +17,7 @@ export default async function (req, res) {
     return;
   }
 
-  const prompt = req.body.prompt
+  const promptType = req.body.promptType
   const input = req.body.text || '';
   if (input.trim().length === 0) {
     res.status(400).json({
@@ -31,7 +31,7 @@ export default async function (req, res) {
     try {
       const completion = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: generatePrompt(input, prompt),
+        prompt: generatePrompt(input, promptType),
         temperature: 0.6,
       });
       res.status(200).json({ result: completion.data.choices[0].text });
@@ -50,10 +50,10 @@ export default async function (req, res) {
       }
     }
   } else
-    res.status(200).json({ result: generatePrompt(input, prompt) });
+    res.status(200).json({ result: generatePrompt(input, promptType) });
 }
 
-function generatePrompt(input, prompt) {
+function generatePrompt(input, promptType) {
   if(prompt === "Question") {
     console.log(prompt)
     return `${long.goal}

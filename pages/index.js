@@ -20,7 +20,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: textInput, prompt: selectedOption}),
+        body: JSON.stringify({ text: textInput, promptType: selectedOption}),
       });
 
       const data = await response.json();
