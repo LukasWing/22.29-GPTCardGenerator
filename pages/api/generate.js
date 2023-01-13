@@ -49,8 +49,6 @@ export default async function (req, res) {
 }
 
 function generatePrompt(text) {
-  const capitalizedQuestion =
-    text[0].toUpperCase() + text.slice(1).toLowerCase();
   return `Generate a short question based on text..
 
 Text1: The presentation layer is the user interface of a software application, responsible for displaying data and accepting user input.
@@ -62,7 +60,6 @@ Question2: What is a Memex?
 Text3: "Spaced repetition systems work only as well as the prompts you give them. And especially when new to these systems, you’re likely to give them mostly bad prompts. It often won’t even be clear which prompts are bad and why, much less how to improve them."
 Question3: What is a key limitaiton of of spaced repitition systems as it relates to prompts?
 
-Text: ${capitalizedQuestion}
+Text: ${text}
 Question:`;
 }
-
