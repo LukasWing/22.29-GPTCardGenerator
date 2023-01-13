@@ -54,25 +54,6 @@ export default async function (req, res) {
 }
 
 function generatePrompt(input, promptType) {
-<<<<<<< HEAD
-  if(prompt === "Question") {
-    console.log(prompt)
-    return `${long.goal}
-    Text1: ${long.shots[0].text}
-    Question1: ${long.shots[0].question}
-    
-    Text2: ${long.shots[1].text}
-    Question2: ${long.shots[1].question}
-    
-    Text3: ${long.shots[2].text}
-    Question3: ${long.shots[2].question}
-    
-    Text: ${input}
-    ${long.ending}`;
-  } else if (prompt === "Cloze") {
-  }
-
-=======
     console.log(promptType)
     const prompt = promptType === "Question" ? question : cloze;
     return `${prompt.goal}
@@ -87,5 +68,4 @@ function generatePrompt(input, promptType) {
       
       Text: ${input}
       ${prompt.ending}`;
->>>>>>> 2fc877671ec84908228e26430a6de31949c5374b
 }
