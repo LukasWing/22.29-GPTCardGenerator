@@ -54,13 +54,13 @@ function generatePrompt(text) {
   return `Generate a short question based on text..
 
 Text1: The presentation layer is the user interface of a software application, responsible for displaying data and accepting user input.
-Question1: What is the presentation layer
+Question1: What is the presentation layer?
 
 Text2: A memex is a device in which an individual stores all his books, records, and communications, and which is mechanized so that it may be consulted with exceeding speed and flexibility. It is an enlarged intimate supplement to his memory.
-Question2: What is a Memex
+Question2: What is a Memex?
 
 Text3: "Spaced repetition systems work only as well as the prompts you give them. And especially when new to these systems, you’re likely to give them mostly bad prompts. It often won’t even be clear which prompts are bad and why, much less how to improve them."
-Question3: What is a key limitaiton of of spaced repitition systems as it relates to prompts
+Question3: What is a key limitaiton of of spaced repitition systems as it relates to prompts?
 
 Text: ${capitalizedQuestion}
 Question:`;

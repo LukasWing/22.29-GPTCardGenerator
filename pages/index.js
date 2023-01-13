@@ -42,7 +42,7 @@ export default function Home() {
         <img src="/noun-flash-cards.svg" className={styles.icon} />
         <h3>Flashcard Question Generator</h3>
         <form onSubmit={onSubmit}>
-          <input
+          <textarea
             type="text"
             name="text"
             placeholder="Enter text"
