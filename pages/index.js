@@ -29,6 +29,7 @@ export default function Home() {
       console.error(error);
       alert(error.message);
     }
+    
   }
 
   return (
